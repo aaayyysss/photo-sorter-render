@@ -1,30 +1,31 @@
-# Use official Python slim image
+
+# Use official Python image
 FROM python:3.10-slim
 
 # Set working directory
 WORKDIR /app
 
-# Install system dependencies required to build packages
+# Install system dependencies
 RUN apt-get update && apt-get install -y \
-    build-essential \
-    cmake \
     git \
+    cmake \
+    ffmpeg \
     libgl1 \
     && rm -rf /var/lib/apt/lists/*
 
-# Copy requirements and install Python dependencies
+# Install pip packages
 COPY requirements.txt .
-RUN pip install --upgrade pip && pip install -r requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
 
-COPY download_model.sh /app/download_model.sh
-RUN chmod +x /app/download_model.sh && /app/download_model.sh
+# Add model downloader
+COPY download_model.sh .
+RUN chmod +x download_model.sh && ./download_model.sh
 
-# Copy app source code
+# Copy app code
 COPY . .
 
-# Expose Flask port
+# Expose port
 EXPOSE 5000
 
-# Final command to run
-CMD bash -c "bash download_model.sh && python app.py"
-
+# Run app
+CMD ["python", "app.py"]
