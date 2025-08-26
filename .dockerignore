@@ -2,8 +2,12 @@ __pycache__/
 *.pyc
 *.pyo
 *.pyd
-*.log
-*.sqlite3
 .env
-*.DS_Store
-*.egg-info/
+.DS_Store
+.idea/
+.vscode/
+uploads/*
+logs/*
+sorted/*
+manifests/*
+models/*
