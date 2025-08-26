@@ -1,12 +1,11 @@
-    services:
+env: python
+pythonVersion: 3.10.13
+
+services:
   - type: web
     name: photo-sorter-render
-    env: python
     plan: free
-    region: frankfurt  # Or use oregon or ohio based on your location
+    region: frankfurt
     buildCommand: pip install -r requirements.txt
     startCommand: bash download_model.sh && python app.py
-    envVars:
-      - key: PYTHON_VERSION
-        value: 3.12.1
     autoDeploy: true
