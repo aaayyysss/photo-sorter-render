@@ -1,9 +1,10 @@
 services:
   - type: web
     name: photo-sorter
-    env: python
-    buildCommand: |
-      pip install -r requirements.txt
-      chmod +x download_model.sh
-      ./download_model.sh
-    startCommand: python app.py
+    env: docker
+    autoDeploy: true
+    dockerfilePath: ./Dockerfile
+    plan: free
+    envVars:
+      - key: PORT
+        value: 5000
