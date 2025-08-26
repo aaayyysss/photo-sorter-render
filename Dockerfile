@@ -16,6 +16,9 @@ RUN apt-get update && apt-get install -y \
 COPY requirements.txt .
 RUN pip install --upgrade pip && pip install -r requirements.txt
 
+COPY download_model.sh /app/download_model.sh
+RUN chmod +x /app/download_model.sh && /app/download_model.sh
+
 # Copy app source code
 COPY . .
 
@@ -24,3 +27,4 @@ EXPOSE 5000
 
 # Final command to run
 CMD bash -c "bash download_model.sh && python app.py"
+
