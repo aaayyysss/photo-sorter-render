@@ -1,8 +1,0 @@
-services:
-  - type: web
-    name: photo-sorter-render
-    plan: free
-    region: frankfurt
-    buildCommand: pip install -r requirements.txt
-    startCommand: bash download_model.sh && python app.py
-    autoDeploy: true
