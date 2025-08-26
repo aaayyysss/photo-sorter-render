@@ -1,9 +1,12 @@
-services:
+    services:
   - type: web
-    name: photo-sorter
+    name: photo-sorter-render
     env: python
-    buildCommand: |
-      pip install -r requirements.txt
-      chmod +x download_model.sh
-      ./download_model.sh
-    startCommand: python app.py
+    plan: free
+    region: frankfurt  # Or use oregon or ohio based on your location
+    buildCommand: pip install -r requirements.txt
+    startCommand: bash download_model.sh && python app.py
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.1
+    autoDeploy: true
