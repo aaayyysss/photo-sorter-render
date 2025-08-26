@@ -1,9 +1,9 @@
 #!/bin/bash
-set -e  # 🔒 Stop immediately if any command fails
+set -e
 
 echo "📁 Creating model directory..."
-mkdir -p .insightface/models/buffalo_l
-cd .insightface/models/buffalo_l
+mkdir -p /root/.insightface/models/buffalo_l
+cd /root/.insightface/models/buffalo_l
 
 echo "📥 Downloading model files..."
 
@@ -14,4 +14,4 @@ gdown https://drive.google.com/uc?id=19XQbQzHoMOMqbgv63FBvvdab19twQ7xx
 gdown https://drive.google.com/uc?id=1x_oht716_lkGsM75gHNd9XN2bNpsVynh
 gdown https://drive.google.com/uc?id=12xiMN1lVau9ZSArPsfjNewvpTHx27HJK
 
-echo "✅ Model downloaded and saved in .insightface/models/buffalo_l"
+echo "✅ Model downloaded and saved in /root/.insightface/models/buffalo_l"
